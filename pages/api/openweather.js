@@ -1,16 +1,16 @@
 import { useState } from 'react';
 
-export default function CurrentWeather() {
+export default function WeatherForecast() {
   const [city, setCity] = useState('');
-  const [weather, setWeather] = useState(null);
+  const [forecast, setForecast] = useState(null);
   const [error, setError] = useState(null);
 
-  const fetchWeather = async () => {
-    setError(null); 
+  const fetchForecast = async () => {
+    setError(null); // Rensa tidigare fel
     try {
-      const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY; 
+      const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY; // Hämta API-nyckel från miljövariabler
       const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`
       );
 
       if (!res.ok) {
@@ -18,32 +18,41 @@ export default function CurrentWeather() {
       }
 
       const data = await res.json();
-      setWeather(data); // Uppdatera väderdata
+      setForecast(data); // Uppdatera prognosdata
     } catch (err) {
-      setWeather(null); // Töm väderdata vid fel
+      setForecast(null); // Töm prognosdata vid fel
       setError(err.message); // Visa felmeddelande
     }
   };
 
   return (
     <div>
-      <h1>Aktuellt väder</h1>
+      <h1>Weather Forecast</h1>
       <input
         type="text"
-        placeholder="Ange stad"
+        placeholder="Enter city"
         value={city}
         onChange={(e) => setCity(e.target.value)}
       />
-      <button onClick={fetchWeather}>Hämta väder</button>
+      <button onClick={fetchForecast}>Get weather</button>
 
       {error && <p style={{ color: 'red' }}>Fel: {error}</p>}
 
-      {weather && (
+      {forecast && (
         <div>
-          <h2>Väder i {weather.name}</h2>
-          <p>{weather.weather[0].description}</p>
-          <p>Temperatur: {weather.main.temp}°C</p>
-          <p>Fuktighet: {weather.main.humidity}%</p>
+          <h2>{forecast.city.name}</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
+            {forecast.list
+              .filter((_, index) => index % 8 === 0) // Filtrera ut 1 tidpunkt per dag
+              .map((weather, index) => (
+                <div key={index} style={{ border: '1px solid #ccc', padding: '10px' }}>
+                  <h3>{new Date(weather.dt * 1000).toLocaleDateString()}</h3>
+                  <p>{weather.weather[0].description}</p>
+                  <p>Temperature: {Math.round(weather.main.temp)}°C</p>
+                  <p>Humidity: {weather.main.humidity}%</p>
+                </div>
+              ))}
+          </div>
         </div>
       )}
     </div>

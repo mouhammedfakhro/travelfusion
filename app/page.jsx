@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
+import App from "./App";
 
-const LandingPage = () => {
+const Layout = () => {
   return (
-    <div>
-        <h1>Hey!</h1>
-    </div>
-  )
-}
+    <html lang="en">
+      <body>
+        <App/>
+      </body>
+    </html>
+  );
+};
 
-export default LandingPage
+export default Layout;

@@ -1,12 +1,12 @@
 "use client";
-import EventBox from "../components/EventBox";
+import AttractionBox from "../components/AttractionBox";
 import Sidebar from "../components/Sidebar";
 import "../global.css";
 import React from "react";
 
 function EventPage() {
 
-    // for each event, adds an event component and populates it
+    // for each item, adds an attractionBox component and populates it
     function addEvents() {
 
     }
@@ -31,15 +31,13 @@ function EventPage() {
             light:[&::-webkit-scrollbar-track]:bg-neutral-700
             light:[&::-webkit-scrollbar-thumb]:bg-neutral-500" >
                 
-
-                {/*div contains all events for that date*/}
-                <div className="space-y-2">
-                    <EventBox/>
-                    <EventBox/>
-                    <EventBox/>
-                    <EventBox/>
-                    <EventBox/>
-                </div>                               
+                <AttractionBox/>
+                <AttractionBox/>
+                <AttractionBox/>
+                <AttractionBox/>
+                <AttractionBox/>
+                <AttractionBox/>
+                               
             </div>
         </div>
     </div>

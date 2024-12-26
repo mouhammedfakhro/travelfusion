@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import "../global.css"; 
-import { useRouter } from "next/navigation";
 import Sidebar from "../components/Sidebar";
 
 
@@ -17,17 +16,24 @@ function AboutPage() {
     const weatherIcon = "https://cdn-icons-png.freepik.com/512/263/263883.png";
 
     return (
-    <div className="bg-blue-950 items-center justify-center w-full h-full min-h-screen flex">
+    <div className="bg-blue-950 justify-center w-full min-h-screen flex">
 
         {/*main div contains all contents*/}
-        <div className=" m2 w-[85%] space-x-2 text-gray-300 flex absolute">
+        <div className="h-fit w-[80%] mt-[1%] space-x-2 text-gray-300 flex">
 
-            {/*div contains all buttons on left*/}
+            {/*sidebar on left*/}
             <Sidebar/>
 
             {/*div contains body of the page*/}
-            <div className="p-8 rounded-md w-full min-h-full space-y-3
-            bg-gradient-to-br from-blue-200 to-blue-400 text-gray-900">
+            <div className="p-8 rounded-md w-full space-y-3 h-[600px]
+            bg-gradient-to-br from-blue-100 to-blue-200 text-gray-900 overflow-y-scroll
+            [&::-webkit-scrollbar]:w-2
+            [&::-webkit-scrollbar-track]:rounded-full
+            [&::-webkit-scrollbar-track]:bg-gray-100
+            [&::-webkit-scrollbar-thumb]:rounded-full
+            [&::-webkit-scrollbar-thumb]:bg-gray-300
+            light:[&::-webkit-scrollbar-track]:bg-neutral-700
+            light:[&::-webkit-scrollbar-thumb]:bg-neutral-500">
 
                 {/*1.upper section - contains title, description and an image*/}
                 <div className="flex space-x-3">

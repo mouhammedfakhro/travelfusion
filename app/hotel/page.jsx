@@ -1,15 +1,10 @@
 "use client";
-import EventBox from "../components/EventBox";
 import Sidebar from "../components/Sidebar";
+import HotelBox from "../components/HotelBox";
 import "../global.css";
 import React from "react";
 
-function EventPage() {
-
-    // for each event, adds an event component and populates it
-    function addEvents() {
-
-    }
+function HotelPage() {
 
     return (
     <div className="bg-blue-950 justify-center w-full min-h-screen flex">
@@ -31,19 +26,14 @@ function EventPage() {
             light:[&::-webkit-scrollbar-track]:bg-neutral-700
             light:[&::-webkit-scrollbar-thumb]:bg-neutral-500" >
                 
-
-                {/*div contains all events for that date*/}
-                <div className="space-y-2">
-                    <EventBox/>
-                    <EventBox/>
-                    <EventBox/>
-                    <EventBox/>
-                    <EventBox/>
-                </div>                               
+                <HotelBox/>
+                <HotelBox/>
+                <HotelBox/>
+                               
             </div>
         </div>
     </div>
     );
 }
 
-export default EventPage;
+export default HotelPage;

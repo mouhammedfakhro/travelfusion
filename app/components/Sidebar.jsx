@@ -7,17 +7,21 @@ const Sidebar = () => {
     // buttons clicked
     const aboutClicked = () => {router.push("/about");}
     const eventsClicked = () => {router.push("/event");}
-    const attractionsClicked = () => {alert("attractions clicked");}
-    const foodClicked = () => {alert("food clicked");}
-    const hotelClicked = () => {alert("hotel clicked");}
+    const attractionsClicked = () => {router.push("/attractions");}
+    const foodClicked = () => {router.push("/food");}
+    const hotelClicked = () => {router.push("/hotel");}
+
+    function resetAllButtons() {
+
+    }
 
   return (
     <div className="w-[15%] text-m space-y-1">
       {/*about*/}
       <button
         id="about-button"
-        className="w-full bg-blue-200 rounded-md p-2 
-    text-gray-800 hover:text-gray-800 hover:bg-blue-200"
+        className="w-full bg-blue-900 rounded-md p-2 
+      hover:text-gray-800 hover:bg-blue-200"
         onClick={aboutClicked}
       >
         ABOUT
@@ -26,7 +30,7 @@ const Sidebar = () => {
       {/*events*/}
       <button
         id="events-button"
-        className="w-full bg-blue-800 rounded-md p-2
+        className="w-full bg-blue-900 rounded-md p-2
     hover:text-gray-800 hover:bg-blue-200"
         onClick={eventsClicked}
       >
@@ -36,7 +40,7 @@ const Sidebar = () => {
       {/*attractions*/}
       <button
         id="attractions-button"
-        className="w-full bg-blue-800 rounded-md p-2
+        className="w-full bg-blue-900 rounded-md p-2
     hover:text-gray-800 hover:bg-blue-200"
         onClick={attractionsClicked}
       >
@@ -46,7 +50,7 @@ const Sidebar = () => {
       {/*food*/}
       <button
         id="food-button"
-        className="w-full bg-blue-800 rounded-md p-2
+        className="w-full bg-blue-900 rounded-md p-2
     hover:text-gray-800 hover:bg-blue-200"
         onClick={foodClicked}
       >
@@ -56,7 +60,7 @@ const Sidebar = () => {
       {/*hotel*/}
       <button
         id="hotel-button"
-        className="w-full bg-blue-800 rounded-md p-2
+        className="w-full bg-blue-900 rounded-md p-2
     hover:text-gray-800 hover:bg-blue-200"
         onClick={hotelClicked}
       >

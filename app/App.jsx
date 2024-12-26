@@ -56,7 +56,7 @@ function App() {
             type="text"
             value={text}
             onChange={updateText}
-            className=" rounded-md p-2 focus:outline-none"
+            className=" rounded-md p-2 focus:outline-none text-black"
             placeholder="Barcelona, Spain"
             style={{ width: "200px" }}>
           </input>

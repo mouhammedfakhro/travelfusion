@@ -16,12 +16,12 @@ const Sidebar = () => {
     }
 
   return (
-    <div className="w-[15%] text-m space-y-1">
+    <div className="w-[15%] text-sm space-y-1 text-black">
       {/*about*/}
       <button
         id="about-button"
-        className="w-full bg-blue-900 rounded-md p-2 
-      hover:text-gray-800 hover:bg-blue-200"
+        className="w-full bg-sky-100 rounded-md p-2 
+       hover:bg-blue-200 shadow-md shadow-black/20"
         onClick={aboutClicked}
       >
         ABOUT
@@ -30,8 +30,8 @@ const Sidebar = () => {
       {/*events*/}
       <button
         id="events-button"
-        className="w-full bg-blue-900 rounded-md p-2
-    hover:text-gray-800 hover:bg-blue-200"
+        className="w-full bg-sky-100 rounded-md p-2
+     hover:bg-blue-200 shadow-md shadow-black/20"
         onClick={eventsClicked}
       >
         EVENTS
@@ -40,8 +40,8 @@ const Sidebar = () => {
       {/*attractions*/}
       <button
         id="attractions-button"
-        className="w-full bg-blue-900 rounded-md p-2
-    hover:text-gray-800 hover:bg-blue-200"
+        className="w-full bg-sky-100 rounded-md p-2
+     hover:bg-blue-200 shadow-md shadow-black/20"
         onClick={attractionsClicked}
       >
         ATTRACTIONS
@@ -50,8 +50,8 @@ const Sidebar = () => {
       {/*food*/}
       <button
         id="food-button"
-        className="w-full bg-blue-900 rounded-md p-2
-    hover:text-gray-800 hover:bg-blue-200"
+        className="w-full bg-sky-100 rounded-md p-2
+     hover:bg-blue-200 shadow-md shadow-black/20"
         onClick={foodClicked}
       >
         FOOD
@@ -60,8 +60,8 @@ const Sidebar = () => {
       {/*hotel*/}
       <button
         id="hotel-button"
-        className="w-full bg-blue-900 rounded-md p-2
-    hover:text-gray-800 hover:bg-blue-200"
+        className="w-full bg-sky-100 rounded-md p-2
+     hover:bg-blue-200 shadow-md shadow-black/20"
         onClick={hotelClicked}
       >
         HOTEL

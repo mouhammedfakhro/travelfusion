@@ -16,17 +16,18 @@ function AboutPage() {
     const weatherIcon = "https://cdn-icons-png.freepik.com/512/263/263883.png";
 
     return (
-    <div className="bg-blue-950 justify-center w-full min-h-screen flex">
+    <div className="bg-sky-700 justify-center w-full min-h-screen flex">
 
         {/*main div contains all contents*/}
-        <div className="h-fit w-[80%] mt-[1%] space-x-2 text-gray-300 flex">
+        <div className="h-fit w-[80%] mt-[1%] space-x-2 text-gray-300 flex ">
 
             {/*sidebar on left*/}
             <Sidebar/>
 
             {/*div contains body of the page*/}
-            <div className="p-8 rounded-md w-full space-y-3 h-[600px]
-            bg-gradient-to-br from-blue-100 to-blue-200 text-gray-900 overflow-y-scroll
+            <div className="p-8 rounded-md w-full space-y-3 h-fit max-h-[575px]
+            bg-gradient-to-br from-gray-100 to-blue-200 text-gray-900 overflow-y-scroll
+            shadow-md shadow-black/20
             [&::-webkit-scrollbar]:w-2
             [&::-webkit-scrollbar-track]:rounded-full
             [&::-webkit-scrollbar-track]:bg-gray-100
@@ -39,12 +40,12 @@ function AboutPage() {
                 <div className="flex space-x-3">
                     {/*title and description*/}
                     <div className="text-sm w-[60%] flex flex-col justify-end p-2">
-                        <p className="text-3xl">{cityName}</p>
-                        <p className="text-xl"><strong>{countryName}</strong></p>
-                        <p className="">{description}</p>
+                        <p className="text-2xl">{cityName}</p>
+                        <p className="text-lg"><strong>{countryName}</strong></p>
+                        <p className="text-xs">{description}</p>
                     </div>
                     {/*an image*/}
-                    <div className="w-[40%] flex flex-col justify-end ">
+                    <div className="w-[40%] flex flex-col justify-end shadow-md shadow-black/30">
                             <img alt="" src={shortImage} className="w-fit rounded-md"></img>
                     </div>
                 </div>
@@ -54,7 +55,7 @@ function AboutPage() {
 
                     {/*an image*/}
                     <div className="w-[60%]">
-                    <img src={wideImage} className="rounded-md" alt=""></img>
+                    <img src={wideImage} className="rounded-md shadow-md shadow-black/30" alt=""></img>
                     </div>
                     
                     {/*weather*/}
@@ -64,7 +65,7 @@ function AboutPage() {
                         hover:bg-gradient-to-r"
                         onClick={weatherWidgetClicked}>
                         <div className="max-w-[50%]">
-                            <p className="text-xl">WEATHER</p>
+                            <p className="text-lg">WEATHER</p>
                             <p className="text-6xl">30°C</p>
                         </div>
                         <div className="">

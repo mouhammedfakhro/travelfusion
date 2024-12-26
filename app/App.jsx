@@ -23,8 +23,11 @@ function App() {
     const startDate = document.getElementById("startdate").value;
     const endDate = document.getElementById("enddate").value;
 
-    // show error(s) if date input is invalid
-    if (startDate==="" || endDate==="") {
+    // show error(s) if input is invalid
+    if (text==="") {
+      setErrorLabel("Please type in and select a location.");
+    }
+    else if (startDate==="" || endDate==="") {
       setErrorLabel("Please choose both a start and end date.");
     }
     else if (startDate > endDate) {
@@ -42,10 +45,10 @@ function App() {
   }
 
   return (
-    <div className="items-center justify-center bg-blue-950 w-screen min-h-screen flex">
+    <div className="items-center justify-center bg-sky-700 w-screen min-h-screen flex text-sm">
       {/*main div contains all contents*/}
       <div className="space-y-3 text-white">
-        <h1 className="text-2xl text-center">WHERE TO?</h1>
+        <h1 className="text-xl text-center">WHERE TO?</h1>
 
         {/*second div contains input field and buttons*/}
         <div className="space-x-2 flex w-full min-h-fit-content min-w-fit-content">
@@ -63,16 +66,16 @@ function App() {
 
           {/*calendar buttons*/}
           <input id="startdate" type="date"
-            className="bg-blue-800 hover:bg-blue-900 rounded-md p-2 text-center">
+            className="bg-sky-900 hover:bg-sky-800 rounded-md p-2 text-center shadow-md shadow-black/20">
           </input>
           <p className="text-xl">→</p>
           <input id="enddate" type="date"
-            className="bg-blue-800 hover:bg-blue-900 rounded-md p-2 text-center">
+            className="bg-sky-900 hover:bg-sky-800 rounded-md p-2 text-center shadow-md shadow-black/20">
           </input>
 
           {/*GO button*/}
           <button
-            className="bg-blue-800 hover:bg-blue-900 rounded-md p-2"
+            className="bg-sky-900 hover:bg-sky-800 rounded-md p-2 shadow-md shadow-black/20"
             onClick={goClicked}>GO</button>
         </div>
         <br/>

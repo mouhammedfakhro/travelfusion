@@ -16,7 +16,7 @@ function HotelPage() {
             <Sidebar/>
 
             {/*div contains body of the page*/}
-            <div className="p-8 rounded-md w-full space-y-3 max-h-[575px]
+            <div className="p-8 rounded-md w-full space-y-2 max-h-[575px]
             bg-gradient-to-br from-gray-100 to-blue-200 text-gray-900 overflow-y-scroll
             shadow-md shadow-black/20
             [&::-webkit-scrollbar]:w-2
@@ -27,10 +27,12 @@ function HotelPage() {
             light:[&::-webkit-scrollbar-track]:bg-neutral-700
             light:[&::-webkit-scrollbar-thumb]:bg-neutral-500" >
                 
-                <HotelBox/>
-                <HotelBox/>
-                <HotelBox/>
-                               
+                <HotelBox
+                    hotelImage="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1e/22/ca/2b/andante-hotel.jpg?w=1400&h=-1&s=1"
+                    hotelName="Andante Hotel"
+                    priceFrom="86"
+                    hotelLink="https://www.tripadvisor.com/Hotel_Review-g187497-d2545026-Reviews-Andante_Hotel-Barcelona_Catalonia.html"
+                />                               
             </div>
         </div>
     </div>

@@ -1,11 +1,14 @@
 import React from "react";
 import App from "./App";
+import { GlobalProvider } from "./globalVariables";
 
 const Layout = () => {
   return (
     <html lang="en">
       <body>
-        <App/>
+        <GlobalProvider>
+          <App/>
+        </GlobalProvider>
       </body>
     </html>
   );

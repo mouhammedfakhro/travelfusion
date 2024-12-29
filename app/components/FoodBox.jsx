@@ -1,7 +1,14 @@
 "use client";
 import React from "react";
 
-const FoodBox = () => {
+const FoodBox = ({
+  foodImage,
+  placeName,
+  foodType,
+  priceRange,
+  description,
+  foodLink
+}) => {
   return (
     <div
       id="food-box"
@@ -9,23 +16,24 @@ const FoodBox = () => {
     >
       <img
         alt=""
-        src="https://media-cdn.tripadvisor.com/media/photo-s/21/c6/16/6b/broccoli-cheese-gratin.jpg"
+        src={foodImage}
         className="w-[25%] aspect-auto rounded-md shadow-md shadow-black/20"
       ></img>
       <div className="space-y-1">
-        <h1 id="foodplace-name" className="text-lg">
-        Bodega Biarritz
-        </h1>
-        <p id="food-type-price-range" className="text-xs">$$$ • Mediterranean, European </p>
+        <h1 className="text-lg">{placeName}</h1>
+        <p id="food-type-price-range" className="text-xs">
+          {priceRange} • {foodType}{" "}
+        </p>
         <p id="foodplace-desc" className="text-xs">
-            No reservation. Tiny place. Place possible at the bar . Time to wait estimated 15/30 minutes Menu tapas & cash only
-            </p>
-        <br/>
+          {description}
+        </p>
+        <br />
         <button
           id="link-button"
           className="w-fit h-fit bg-sky-800 text-white text-sm justify-self-end
                                 rounded-md p-2 hover:bg-sky-700
                                 shadow-black/20 shadow-sm"
+          onClick={() => window.open(foodLink, "_blank")}
         >
           Read More
         </button>

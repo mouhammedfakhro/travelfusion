@@ -1,11 +1,11 @@
 import React from "react";
 import App from "./App";
-
+ 
 const Layout = () => {
   return (
     <html lang="en">
       <body>
-        <App/>
+        <App />
       </body>
     </html>
   );

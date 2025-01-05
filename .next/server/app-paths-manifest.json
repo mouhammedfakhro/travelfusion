@@ -1,8 +1,13 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/attractions/page": "app/attractions/page.js",
-  "/event/page": "app/event/page.js",
-  "/hotel/page": "app/hotel/page.js",
+  "/api/overview/route": "app/api/overview/route.js",
+  "/api/events/route": "app/api/events/route.js",
+  "/api/attractions/route": "app/api/attractions/route.js",
+  "/api/restaurants/route": "app/api/restaurants/route.js",
+  "/api/hotels/route": "app/api/hotels/route.js",
   "/page": "app/page.js",
-  "/food/page": "app/food/page.js"
+  "/about/page": "app/about/page.js",
+  "/event/page": "app/event/page.js",
+  "/attractions/page": "app/attractions/page.js",
+  "/food/page": "app/food/page.js",
+  "/hotel/page": "app/hotel/page.js"
 }

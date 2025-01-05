@@ -5,11 +5,22 @@
       "static/chunks/main-app.js",
       "static/chunks/app/layout.js"
     ],
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
+    ],
     "/about/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/about/page.css",
       "static/chunks/app/about/page.js"
+    ],
+    "/api/overview/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/overview/route.js"
     ],
     "/event/page": [
       "static/chunks/webpack.js",
@@ -17,10 +28,10 @@
       "static/css/app/event/page.css",
       "static/chunks/app/event/page.js"
     ],
-    "/api/overview/route": [
+    "/api/events/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/api/overview/route.js"
+      "static/chunks/app/api/events/route.js"
     ],
     "/attractions/page": [
       "static/chunks/webpack.js",
@@ -33,17 +44,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/api/attractions/route.js"
     ],
-    "/hotel/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/hotel/page.css",
-      "static/chunks/app/hotel/page.js"
-    ],
-    "/api/hotels/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/hotels/route.js"
-    ],
     "/food/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -55,21 +55,16 @@
       "static/chunks/main-app.js",
       "static/chunks/app/api/restaurants/route.js"
     ],
-    "/api/events/route": [
+    "/hotel/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/api/events/route.js"
+      "static/css/app/hotel/page.css",
+      "static/chunks/app/hotel/page.js"
     ],
-    "/page": [
+    "/api/hotels/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
-    ],
-    "/_not-found/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/app/api/hotels/route.js"
     ]
   }
 }

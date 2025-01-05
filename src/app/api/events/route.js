@@ -1,9 +1,11 @@
-import { createHotelObjects } from "../../../../utils/fetchTripAdvisor";
+import { getEventDetails } from "../../../../utils/fetchFromTicketMaster.js";
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
   const location = searchParams.get("location");
-  const events = [];
+  const startDate = searchParams.get("startDate");
+  const endDate = searchParams.get("endDate");
+  const events = await getEventDetails(location, startDate, endDate);
 
   if (!events) {
     return new Response(

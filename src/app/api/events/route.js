@@ -7,10 +7,14 @@ export async function GET(req) {
   const endDate = searchParams.get("endDate");
   const events = await getEventDetails(location, startDate, endDate);
 
+  console.log(startDate, endDate);
+
+  console.log(events);
+
   if (!events) {
     return new Response(
       JSON.stringify({
-        error: "Error fetching hotels. Please enter a valid location.",
+        error: "Error fetching events. Please enter a valid location and date.",
       }),
       {
         status: 400,

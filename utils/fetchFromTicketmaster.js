@@ -2,7 +2,7 @@ const apiKey = "u4U7AL6iIbEtHaQWPyPyt6wAFsYUyFZt"
 
 export async function getEventDetails(city, startDate, endDate) {
   try {
-    const url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${apiKey}&city=${encodeURIComponent(city)}&startDateTime=${startDate}T00:00:00Z&endDateTime=${endDate}T23:59:59Z`;
+    const url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${apiKey}&city=${city}&startDateTime=${startDate}T00:00:00Z&endDateTime=${endDate}T23:59:59Z`;
 
     const response = await fetch(url);
     if (!response.ok) {
@@ -10,6 +10,7 @@ export async function getEventDetails(city, startDate, endDate) {
     }
 
     const data = await response.json();
+    console.log(data._embedded.events);
 
     if (data._embedded && data._embedded.events) {
       return data._embedded.events.map(event => ({

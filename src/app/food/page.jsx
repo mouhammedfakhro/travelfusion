@@ -29,6 +29,7 @@ function foodPage() {
     try {
       const foods = await getRestaurants(location);
       setAllFoods(foods);
+      console.log(foods);
     } catch (error) {
       console.error("Failed to fetch foods:", error);
       setLoadingError(true);

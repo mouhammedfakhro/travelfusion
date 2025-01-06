@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import "../global.css";
 import Sidebar from "../components/Sidebar";
 import WeatherBox from "../components/WeatherBox";
@@ -7,16 +7,8 @@ import { getLocationDetails } from "../../../lib/api";
 import { useSearchParams } from "next/navigation";
 import { ClipLoader } from "react-spinners";
 
-function AboutPage() {
-  // placeholder data
-  {
-    /**
-    const cityName = "BARCELONA";
-  const countryName = "SPAIN";
-  const description =
-    "When it comes to history, art, and architecture, Barcelona delivers. There’s Gaudí’s iconic Basílica de la Sagrada Familia, the Picasso Museum, and the Gothic Quarter. But look beyond the landmarks and busy mercados and you’ll notice how nature steals the show—the city’s literally surrounded by it. On one side you’ve got three miles of gorgeous sandy beaches that give the neighboring Balearic Islands a run for their money, and on the other, the Serra de Collserola mountains, home to Parc de Collserola—one of the biggest city parks in the world. It’s probably why bike culture’s big here: Over 180 miles of bike lanes make it easy to get around the Catalan capital. Spend a low-key afternoon cruising the revamped La Rambla (you’ll have to walk your bike once you hit the pedestrian-only drag) and stop for tapas and sangria."; */
-  }
-
+// Separate Suspense Component
+function AboutContent() {
   const params = useSearchParams();
   const location = params.get("location");
   const startDate = params.get("startDate");
@@ -29,27 +21,28 @@ function AboutPage() {
   const [loadingError, setLoadingError] = useState(false);
   const [cityImage, setCityImage] = useState("");
   const [weatherCondition, setWeatherCondition] = useState("");
-  const [weatherDescripiton, setWeatherDescription] = useState("");
+  const [weatherDescription, setWeatherDescription] = useState("");
   const [temperature, setTemperature] = useState(0);
 
   const getDetails = async () => {
-    const details = await getLocationDetails(location);
-    if (details) {
-      setDescription(details.description);
-      setCityName(details.city);
-      setCountryName(details.country);
-      setCityImage(details.image);
-      setWeatherCondition(details.weather?.condition);
-      setWeatherDescription(details.weather?.description);
-      setTemperature(Math.round(details.weather?.temperature));
+    try {
+      const details = await getLocationDetails(location);
 
+      if (details) {
+        setDescription(details.description);
+        setCityName(details.city);
+        setCountryName(details.country);
+        setCityImage(details.image);
+        setWeatherCondition(details.weather?.condition || "Unknown");
+        setWeatherDescription(details.weather?.description || "Unknown");
+        setTemperature(Math.round(details.weather?.temperature || 0));
 
-      console.log(details);
-      
-
-      // set loading to false after applying all the data  
-      setLoading(false);
-    } else {
+        setLoading(false);
+      } else {
+        throw new Error("Failed to fetch details");
+      }
+    } catch (error) {
+      console.error("Error fetching location details:", error);
       setTimeout(() => {
         setLoading(false);
         setLoadingError(true);
@@ -58,17 +51,22 @@ function AboutPage() {
   };
 
   useEffect(() => {
-    getDetails();
-  }, []);
+    if (location) {
+      getDetails();
+    } else {
+      setLoading(false);
+      setLoadingError(true);
+    }
+  }, [location]);
 
   return (
     <div className="bg-sky-700 justify-center w-full min-h-screen flex">
-      {/*main div contains all contents*/}
+      {/* Main div contains all contents */}
       <div className="h-fit w-[80%] mt-[1%] space-x-2 text-gray-300 flex">
-        {/*sidebar on left*/}
-        <Sidebar startDate={startDate} endDate={endDate} selectedCity={location}/>
+        {/* Sidebar on the left */}
+        <Sidebar startDate={startDate} endDate={endDate} selectedCity={location} />
 
-        {/*div contains body of the page*/}
+        {/* Page content */}
         <div
           className="p-8 rounded-md w-full space-y-3 h-fit max-h-[575px]
             bg-gradient-to-br from-gray-100 to-blue-200 text-gray-900 overflow-y-scroll
@@ -81,6 +79,7 @@ function AboutPage() {
             light:[&::-webkit-scrollbar-track]:bg-neutral-700
             light:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
         >
+          {/* Loading State */}
           {loading && (
             <div className="text-center mt-[20px]">
               <ClipLoader color="#36d7b7" loading={loading} size={50} />
@@ -88,27 +87,28 @@ function AboutPage() {
             </div>
           )}
 
+          {/* Error State */}
           {loadingError && (
             <div className="text-center text-3xl font-bold">
               <p>Failed to load...</p>
             </div>
           )}
 
+          {/* Success State */}
           {!loading && !loadingError && (
             <div>
-              {/*1.upper section - contains title, description*/}
+              {/* 1. Upper Section - Title and Description */}
               <div className="flex space-x-3">
-                {/*title and description*/}
-                <div className="text-sm  flex flex-col justify-end p-2">
+                <div className="text-sm flex flex-col justify-end p-2">
                   <p className="text-2xl font-bold">{countryName}</p>
                   <p className="text-lg font-bold">{cityName}</p>
                   <p className="text-xs">{description}</p>
                 </div>
               </div>
 
-              {/*2.lower section - contains an image and weather*/}
-              <div className=" flex space-x-3 ">
-                {/*an image*/}
+              {/* 2. Lower Section - Image and Weather */}
+              <div className="flex space-x-3">
+                {/* City Image */}
                 <div className="w-[60%] h-[300px] overflow-hidden rounded-md shadow-md shadow-black/30">
                   <img
                     src={cityImage}
@@ -117,15 +117,26 @@ function AboutPage() {
                   />
                 </div>
 
-                {/*weather*/}
-                
-                <WeatherBox degrees={temperature} status={weatherDescripiton} main={weatherCondition}/>
+                {/* Weather Box */}
+                <WeatherBox
+                  degrees={temperature}
+                  status={weatherDescription}
+                  main={weatherCondition}
+                />
               </div>
             </div>
           )}
         </div>
       </div>
     </div>
+  );
+}
+
+function AboutPage() {
+  return (
+    <Suspense fallback={<div className="text-center mt-8"><ClipLoader color="#36d7b7" size={50} /> Loading...</div>}>
+      <AboutContent />
+    </Suspense>
   );
 }
 

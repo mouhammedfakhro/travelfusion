@@ -3,11 +3,11 @@ import { useSearchParams } from "next/navigation";
 import ContentBox from "../components/ContentBox";
 import Sidebar from "../components/Sidebar";
 import "../global.css";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { getHotels } from "../../../lib/api";
 import { ClipLoader } from "react-spinners";
 
-function hotelPage() {
+function HotelContent() {
   // for each item, adds an ContentBox component and populates it
   const params = useSearchParams();
   const location = params.get("location");
@@ -107,6 +107,20 @@ function hotelPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+function hotelPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="text-center mt-8">
+          <ClipLoader color="#36d7b7" size={50} /> Loading...
+        </div>
+      }
+    >
+      <HotelContent />
+    </Suspense>
   );
 }
 

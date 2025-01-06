@@ -3,11 +3,11 @@ import { useSearchParams } from "next/navigation";
 import EventBox from "../components/EventBox";
 import Sidebar from "../components/Sidebar";
 import "../global.css";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { getEvents } from "../../../lib/api";
 import { ClipLoader } from "react-spinners";
 
-function eventsPage() {
+function EventsContent() {
   // for each item, adds an ContentBox component and populates it
   const params = useSearchParams();
   const location = params.get("location");
@@ -113,5 +113,14 @@ function eventsPage() {
     </div>
   );
 }
+
+function eventsPage() {
+  return (
+    <Suspense fallback={<div className="text-center mt-8"><ClipLoader color="#36d7b7" size={50} /> Loading...</div>}>
+      <EventsContent />
+    </Suspense>
+  );
+}
+
 
 export default eventsPage;

@@ -3,7 +3,7 @@ import { useSearchParams } from "next/navigation";
 import ContentBox from "../components/ContentBox";
 import Sidebar from "../components/Sidebar";
 import "../global.css";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { getAttractions } from "../../../lib/api";
 import { ClipLoader } from "react-spinners";
 

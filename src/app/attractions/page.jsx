@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 import { getAttractions } from "../../../lib/api";
 import { ClipLoader } from "react-spinners";
 
-function attractionsPage() {
+function AttractionsContent() {
   // for each item, adds an ContentBox component and populates it
   const params = useSearchParams();
   const location = params.get("location");
@@ -107,6 +107,14 @@ function attractionsPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+function attractionsPage() {
+  return (
+    <Suspense fallback={<div className="text-center mt-8"><ClipLoader color="#36d7b7" size={50} /> Loading...</div>}>
+      <AttractionsContent />
+    </Suspense>
   );
 }
 

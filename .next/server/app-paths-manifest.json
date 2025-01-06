@@ -1,13 +1,4 @@
 {
-  "/api/overview/route": "app/api/overview/route.js",
-  "/api/events/route": "app/api/events/route.js",
-  "/api/attractions/route": "app/api/attractions/route.js",
   "/api/restaurants/route": "app/api/restaurants/route.js",
-  "/api/hotels/route": "app/api/hotels/route.js",
-  "/page": "app/page.js",
-  "/about/page": "app/about/page.js",
-  "/event/page": "app/event/page.js",
-  "/attractions/page": "app/attractions/page.js",
-  "/food/page": "app/food/page.js",
-  "/hotel/page": "app/hotel/page.js"
+  "/page": "app/page.js"
 }

@@ -1,4 +1,6 @@
-import { getEventDetails } from "../../../../utils/fetchFromTicketMaster.js";
+{/**
+  
+  import { getEventDetails } from "../../../../utils/fetchFromTicketMaster.js";
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
@@ -37,3 +39,4 @@ export async function GET(req) {
     }
   );
 }
+*/}

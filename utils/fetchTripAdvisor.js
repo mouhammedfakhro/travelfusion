@@ -1,4 +1,4 @@
-const apiKey = "6275F32A7C734D788D9ADCCBDC2B76F4";
+const apiKey = "CD678A669501410DA16D6EBE3DF571D5";
 
 export async function getCityID(city) {
   try {

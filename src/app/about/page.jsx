@@ -20,9 +20,10 @@ function AboutContent() {
   const [loading, setLoading] = useState(true);
   const [loadingError, setLoadingError] = useState(false);
   const [cityImage, setCityImage] = useState("");
-  const [weatherCondition, setWeatherCondition] = useState("");
-  const [weatherDescription, setWeatherDescription] = useState("");
-  const [temperature, setTemperature] = useState(0);
+  //const [weatherCondition, setWeatherCondition] = useState("");
+  //const [weatherDescription, setWeatherDescription] = useState("");
+  //const [temperature, setTemperature] = useState(0);
+  const [weatherArray, setWeatherArray] = useState([]);
 
   const getDetails = async () => {
     try {
@@ -33,9 +34,10 @@ function AboutContent() {
         setCityName(details.city);
         setCountryName(details.country);
         setCityImage(details.image);
-        setWeatherCondition(details.weather?.condition || "Unknown");
-        setWeatherDescription(details.weather?.description || "Unknown");
-        setTemperature(Math.round(details.weather?.temperature || 0));
+        //setWeatherCondition(details.weather?.condition || "Unknown");
+        //setWeatherDescription(details.weather?.description || "Unknown");
+        //setTemperature(Math.round(details.weather?.temperature || 0));
+        setWeatherArray(details.weather);
 
         setLoading(false);
       } else {
@@ -72,7 +74,7 @@ function AboutContent() {
 
         {/* Page content */}
         <div
-          className="p-8 rounded-md w-full space-y-3 flex
+          className="p-8 rounded-md w-full space-y-3 flex min-h-fit 
             bg-gradient-to-br from-gray-100 to-blue-200 text-gray-900 
             shadow-md shadow-black/20"
         >
@@ -93,32 +95,34 @@ function AboutContent() {
 
           {/* Success State */}
           {!loading && !loadingError && (
-            <div className="flex space-x-5">
+
+            <div className="flex space-x-5 min-h-[100%]">
+
               {/*1.left section*/}
-              <div className=" w-[60%]">
+              <div className=" w-[65%] ">
+
                 {/*title, country, description*/}
-                <div className="text-sm  justify-end p-2">
+                <div className="text-sm h-[40%] overflow-y-hidden">
                   <p className="text-2xl font-bold">{cityName}</p>
                   <p className="text-lg font-bold">{countryName}</p>
                   <p className="text-xs">{description}</p>
                 </div>
+
                 {/*image*/}
                 <img
                   src={cityImage}
                   alt="City"
-                  className="max-h-full w-fit object-cover overflow-hidden rounded-md shadow-md shadow-black/30"
+                  className="h-[60%] w-full overflow-hidden object-cover rounded-md shadow-md shadow-black/30"
                 />
+
               </div>
 
-              <br />
 
               {/*2.right section - contains weather*/}
-              <div className="h-full w-[40%] relative flex">
-                <div className="absolute bottom-0 w-full">
+              <div className="h-full w-[45%] bottom-0 justify-self-end flex">
+                <div className="w-full">
                   <WeatherBox
-                    degrees={temperature}
-                    status={weatherDescription}
-                    main={weatherCondition}
+                    weather={weatherArray}
                   />
                 </div>
               </div>

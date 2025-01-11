@@ -19,7 +19,7 @@ const EventBox = ({
       <img
         alt=""
         src={eventImage}
-        className="w-64 h-32 object-cover rounded-md shadow-md shadow-black/20"
+        className="w-64 h-32 object-cover aspect-auto rounded-md shadow-md shadow-black/20"
       ></img>
       <div className="space-y-0.5">
         <h1 className="">{eventName}</h1>

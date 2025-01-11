@@ -15,7 +15,7 @@ const ContentBox = ({
       <img
         alt=""
         src={contentImage}
-        className="w-[25%] aspect-auto rounded-md shadow-md shadow-black/20"
+        className="w-[25%] aspect-auto object-cover rounded-md shadow-md shadow-black/20"
       ></img>
 
       <div className="space-y-0.5">

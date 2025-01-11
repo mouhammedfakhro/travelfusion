@@ -64,20 +64,17 @@ function AboutContent() {
       {/* Main div contains all contents */}
       <div className="h-fit w-[80%] mt-[1%] space-x-2 text-gray-300 flex">
         {/* Sidebar on the left */}
-        <Sidebar startDate={startDate} endDate={endDate} selectedCity={location} />
+        <Sidebar
+          startDate={startDate}
+          endDate={endDate}
+          selectedCity={location}
+        />
 
         {/* Page content */}
         <div
-          className="p-8 rounded-md w-full space-y-3 h-fit max-h-[575px]
-            bg-gradient-to-br from-gray-100 to-blue-200 text-gray-900 overflow-y-scroll
-            shadow-md shadow-black/20
-            [&::-webkit-scrollbar]:w-2
-            [&::-webkit-scrollbar-track]:rounded-full
-            [&::-webkit-scrollbar-track]:bg-gray-100
-            [&::-webkit-scrollbar-thumb]:rounded-full
-            [&::-webkit-scrollbar-thumb]:bg-gray-300
-            light:[&::-webkit-scrollbar-track]:bg-neutral-700
-            light:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
+          className="p-8 rounded-md w-full space-y-3 flex
+            bg-gradient-to-br from-gray-100 to-blue-200 text-gray-900 
+            shadow-md shadow-black/20"
         >
           {/* Loading State */}
           {loading && (
@@ -96,33 +93,34 @@ function AboutContent() {
 
           {/* Success State */}
           {!loading && !loadingError && (
-            <div>
-              {/* 1. Upper Section - Title and Description */}
-              <div className="flex space-x-3">
-                <div className="text-sm flex flex-col justify-end p-2">
-                  <p className="text-2xl font-bold">{countryName}</p>
-                  <p className="text-lg font-bold">{cityName}</p>
+            <div className="flex space-x-5">
+              {/*1.left section*/}
+              <div className=" w-[60%]">
+                {/*title, country, description*/}
+                <div className="text-sm  justify-end p-2">
+                  <p className="text-2xl font-bold">{cityName}</p>
+                  <p className="text-lg font-bold">{countryName}</p>
                   <p className="text-xs">{description}</p>
                 </div>
+                {/*image*/}
+                <img
+                  src={cityImage}
+                  alt="City"
+                  className="max-h-full w-fit object-cover overflow-hidden rounded-md shadow-md shadow-black/30"
+                />
               </div>
 
-              {/* 2. Lower Section - Image and Weather */}
-              <div className="flex space-x-3">
-                {/* City Image */}
-                <div className="w-[60%] h-[300px] overflow-hidden rounded-md shadow-md shadow-black/30">
-                  <img
-                    src={cityImage}
-                    alt="City"
-                    className="w-full h-full object-cover rounded-md"
+              <br />
+
+              {/*2.right section - contains weather*/}
+              <div className="h-full w-[40%] relative flex">
+                <div className="absolute bottom-0 w-full">
+                  <WeatherBox
+                    degrees={temperature}
+                    status={weatherDescription}
+                    main={weatherCondition}
                   />
                 </div>
-
-                {/* Weather Box */}
-                <WeatherBox
-                  degrees={temperature}
-                  status={weatherDescription}
-                  main={weatherCondition}
-                />
               </div>
             </div>
           )}
@@ -134,7 +132,13 @@ function AboutContent() {
 
 function AboutPage() {
   return (
-    <Suspense fallback={<div className="text-center mt-8"><ClipLoader color="#36d7b7" size={50} /> Loading...</div>}>
+    <Suspense
+      fallback={
+        <div className="text-center mt-8">
+          <ClipLoader color="#36d7b7" size={50} /> Loading...
+        </div>
+      }
+    >
       <AboutContent />
     </Suspense>
   );

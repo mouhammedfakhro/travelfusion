@@ -32,6 +32,12 @@ const Sidebar = ({ startDate, endDate, selectedCity }) => {
     );
   };
 
+  const returnClicked = () => {
+    router.push(
+      `/`
+    );
+  }
+
   function resetAllButtons() {}
 
   return (
@@ -85,6 +91,17 @@ const Sidebar = ({ startDate, endDate, selectedCity }) => {
       >
         HOTEL
       </button>
+
+      {/*return to landing*/}
+      <button
+        id="return-button"
+        className="w-full bg-sky-100 rounded-md p-2
+     hover:bg-blue-200 shadow-md shadow-black/20"
+        onClick={returnClicked}
+      >
+        {"RETURN"}
+      </button>
+
     </div>
   );
 };

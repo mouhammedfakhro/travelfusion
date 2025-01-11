@@ -47,17 +47,16 @@ function EventsContent() {
       return allEvents.map((event, index) => {
         return (
           <EventBox
-            key={event.id || index} // Use unique ID or fallback to index
+            key={event.id || index} 
             eventImage={
-              event.imageUrl || "https://placehold.co/600x400"
+              event.thumbnail || "https://placehold.co/600x400"
             }
-            eventName={event.name}
-            eventLink={event.link}
+            eventName={event.title}
+            eventLink={event.venue.link}
+            description={event.description}
 
-            // different from attractions/hotel/food:
-            eventLocation={event.location}
-            eventDate={event.date}
-            eventTime={event.time}
+            eventLocation={event.address[0]}
+            eventDate={event.date.when}
           />
         );
       });
@@ -113,6 +112,10 @@ function EventsContent() {
     </div>
   );
 }
+
+
+
+
 
 function eventsPage() {
   return (

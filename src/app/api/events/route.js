@@ -1,6 +1,5 @@
-{/**
-  
-  import { getEventDetails } from "../../../../utils/fetchFromTicketMaster.js";
+
+import { getEventDetails } from "../../../../utils/fetchFromGoogleEvents";
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
@@ -8,11 +7,7 @@ export async function GET(req) {
   const startDate = searchParams.get("startDate");
   const endDate = searchParams.get("endDate");
   const events = await getEventDetails(location, startDate, endDate);
-
-  console.log(startDate, endDate);
-
-  console.log(events);
-
+    
   if (!events) {
     return new Response(
       JSON.stringify({
@@ -39,4 +34,3 @@ export async function GET(req) {
     }
   );
 }
-*/}

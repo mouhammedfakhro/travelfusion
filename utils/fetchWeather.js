@@ -1,4 +1,4 @@
-const apiKey = "e2122c11dee270408b1b8a473b2d4e70";
+const apiKey = process.env.OPENWEATHER_API_KEY;
 
 export async function getWeather(location) {
   try {

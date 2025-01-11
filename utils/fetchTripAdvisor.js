@@ -1,4 +1,4 @@
-const apiKey = "CD678A669501410DA16D6EBE3DF571D5";
+const apiKey = process.env.TRIPADVISOR_API_KEY;
 
 export async function getCityID(city) {
   try {
@@ -102,6 +102,7 @@ export async function createHotelObjects(city) {
 
 export async function getRestaurants(city) {
   //const encodedCity = encodeURIComponent(city);
+  console.log(received);
   try {
     const url = `https://api.content.tripadvisor.com/api/v1/location/search?key=${apiKey}&searchQuery=${city}&category=restaurants&language=en`;
     const response = await fetch(url);

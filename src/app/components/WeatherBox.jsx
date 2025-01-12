@@ -20,36 +20,30 @@ const WeatherBox = ({ weather, degrees, status, main }) => {
   }
 
   function getImageByIndex(index) {
-    switch (weather.at(index)?.description || "Unknown") {
-      case "clear sky":
-        return "https://openweathermap.org/img/wn/01d@2x.png";
-        break;
-      case "few clouds":
-        return "https://openweathermap.org/img/wn/02d@2x.png";
-        break;
-      case "scattered clouds":
-        return "https://openweathermap.org/img/wn/03d@2x.png";
-        break;
-      case "broken clouds":
-        return "https://openweathermap.org/img/wn/04d@2x.png";
-        break;
-      case "shower rain":
-        return "https://openweathermap.org/img/wn/09d@2x.png";
-        break;
-      case "rain":
-        return "https://openweathermap.org/img/wn/10d@2x.png";
-        break;
-      case "thunderstorm":
+    switch (weather.at(index)?.condition || "Unknown") {
+      case "Thunderstorm":
         return "https://openweathermap.org/img/wn/11d@2x.png";
         break;
-      case "snow":
+      case "Drizzle":
+        return "https://openweathermap.org/img/wn/10d@2x.png";
+        break;
+      case "Rain":
+        return "https://openweathermap.org/img/wn/09d@2x.png";
+        break;
+      case "Snow":
         return "https://openweathermap.org/img/wn/13d@2x.png";
         break;
-      case "mist":
+      case "Atmosphere":
         return "https://openweathermap.org/img/wn/50d@2x.png";
         break;
+      case "Clear":
+        return "https://openweathermap.org/img/wn/01d@2x.png";
+        break;
+      case "Clouds":
+        return "https://openweathermap.org/img/wn/03d@2x.png";
+        break;
       default:
-        return "https://cdn-icons-png.flaticon.com/512/3534/3534501.png";
+        return "";
     }
   }
 
@@ -81,7 +75,7 @@ const WeatherBox = ({ weather, degrees, status, main }) => {
         hover:bg-gradient-to-r"
       >
         <p className="text-xs">TOMORROW</p>
-        <p className="text-xs">{getMainConditionByIndex(1)} </p>
+        <p className="text-xs">{getDetailsByIndex(1)} </p>
         <p className="text-xs">{getDegreeByIndex(1)}°C</p>
         <img alt="" src={getImageByIndex(1)} className="w-[10%]"></img>
       </div>
@@ -94,7 +88,7 @@ const WeatherBox = ({ weather, degrees, status, main }) => {
         hover:bg-gradient-to-r"
       >
         <p className="text-xs">{getDateByIndex(2)}</p>
-        <p className="text-xs">{getMainConditionByIndex(2)} </p>
+        <p className="text-xs">{getDetailsByIndex(2)} </p>
         <p className="text-xs">{getDegreeByIndex(2)}°C</p>
         <img alt="" src={getImageByIndex(2)} className="w-[10%]"></img>
       </div>
@@ -107,7 +101,7 @@ const WeatherBox = ({ weather, degrees, status, main }) => {
         hover:bg-gradient-to-r"
       >
         <p className="text-xs">{getDateByIndex(3)}</p>
-        <p className="text-xs">{getMainConditionByIndex(3)} </p>
+        <p className="text-xs">{getDetailsByIndex(3)} </p>
         <p className="text-xs">{getDegreeByIndex(3)}°C</p>
         <img alt="" src={getImageByIndex(3)} className="w-[10%]"></img>
       </div>
@@ -120,7 +114,7 @@ const WeatherBox = ({ weather, degrees, status, main }) => {
         hover:bg-gradient-to-r"
       >
         <p className="text-xs">{getDateByIndex(4)}</p>
-        <p className="text-xs">{getMainConditionByIndex(4)} </p>
+        <p className="text-xs">{getDetailsByIndex(4)} </p>
         <p className="text-xs">{getDegreeByIndex(4)}°C</p>
         <img alt="" src={getImageByIndex(4)} className="w-[10%]"></img>
       </div>

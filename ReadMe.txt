@@ -16,24 +16,16 @@
     2. Installera Next.js:
         "npm install next --save"
 
-4. Konfigurera TripAdvisors API-åtkomst
-Viktigt: TripAdvisors API tillåter endast åtkomst från specifika IP-adresser. 
-Din publika IP-adress är inte privat och används enbart för att ge åtkomst till API:t. Det innebär ingen risk för säkerheten.
-Följ dessa steg för att koppla din IP-adress:
-    1. Besök whatsmyip.com för att få din publika IP-adress.
-    2. Kopiera IP-adressen som visas.
-    3. Gå till TripAdvisors utvecklarportal.
-    4. Klicka på "Get Started" i det övre högra hörnet.
-    5. Klicka på "Continue with Email".
-    6. Klicka på "Sign in using your Tripadvisor account".
-    7. Logga in med följande uppgifter:
-        * E-postadress: m01316292@gmail.com
-        * Lösenord: Password12345!
-    8. Klicka på redigeringsikonen för "API KEY RESTRICTION".
-    9. Ange din IP-adress följt av /32, exempel: "79.136.62.125/32"
-    10 Klicka på Spara och vänta i 1–3 minuter för att ändringarna ska träda i kraft.
-
-5. Starta projektet
+4. Starta projektet
     1. Kör följande kommando för att starta projektet: 
         "npm run dev"
     2. Öppna http://localhost:3000 i din webbläsare för att se projektet.
+
+
+Viktig info: TripAdvisor API:erna fungerar endast på travelfusion.se då de har en begränsning på vilka domäner som får använda API:erna. För att testa API:erna behöver ni göra det på www.travelfusion.se.
+
+.env:
+TRIPADVISOR_API_KEY=CD678A669501410DA16D6EBE3DF571D5
+OPENWEATHER_API_KEY=e2122c11dee270408b1b8a473b2d4e70
+NEXT_PUBLIC_GOOGLE_API_KEY=AIzaSyAbwVanV2LY5cdcSIDEvmLtTlcs5Ea1P4k
+GOOGLE_EVENTS_API_KEY=23326564-8910-4b69-9e5b-a06b0c4da143

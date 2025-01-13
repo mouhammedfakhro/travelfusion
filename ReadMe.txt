@@ -16,7 +16,13 @@
     2. Installera Next.js:
         "npm install next --save"
 
-4. Starta projektet
+4. Installera och konfigurera Tailwind CSS: 
+    1. Installera Tailwind CSS och dess beroenden:
+        npm install -D tailwindcss postcss autoprefixer
+    2. Initiera Tailwind CSS-konfigurationsfiler:
+        npx tailwindcss init -p
+
+5. Starta projektet
     1. Kör följande kommando för att starta projektet: 
         "npm run dev"
     2. Öppna http://localhost:3000 i din webbläsare för att se projektet.

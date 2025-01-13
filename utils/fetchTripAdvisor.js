@@ -90,7 +90,11 @@ export async function fetchImageUrlByLocationId(id) {
 export async function createHotelObjects(city) {
   try {
     const hotelsUrls = `https://api.content.tripadvisor.com/api/v1/location/search?key=${apiKey}&key=66AAEE6BF4B449879C185EC041EE876F&searchQuery=${city}&category=hotels&language=en`;
-    const hotelsResponse = await fetch(hotelsUrls);
+    const hotelsResponse = await fetch(hotelsUrls, {
+      headers: {
+        Referer: "https://travelfusion-iota.vercel.app", // Your allowed domain
+      },
+    });
     const hotelsData = await hotelsResponse.json();
 
     if (hotelsData?.data) {
@@ -115,22 +119,26 @@ export async function createHotelObjects(city) {
 export async function getRestaurants(city) {
   try {
     const url = `https://api.content.tripadvisor.com/api/v1/location/search?key=${apiKey}&searchQuery=${city}&category=restaurants&language=en`;
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+        Referer: "https://travelfusion-iota.vercel.app", // Your allowed domain
+      },
+    });
     const data = await response.json();
-  
+
     if (data?.data) {
       const restaurangPromises = data.data.map(async (restaurang) => {
         const { location_id, name, address_obj } = restaurang;
         const addressString = address_obj.address_string;
         const imageUrl = await fetchImageUrlByLocationId(location_id);
-    
+
         return {
           name,
           address_string: addressString,
           imageUrl,
         };
       });
-    
+
       return Promise.all(restaurangPromises);
     }
   } catch (error) {
@@ -141,7 +149,11 @@ export async function getRestaurants(city) {
 export async function getReviewAndLinkAndPrice(id) {
   try {
     const url = `https://api.content.tripadvisor.com/api/v1/location/${id}/details?key=${apiKey}&language=en&currency=USD`;
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+        Referer: "https://travelfusion-iota.vercel.app", // Your allowed domain
+      },
+    });
     const data = await response.json();
 
     const detail = data;
@@ -181,8 +193,12 @@ export async function getAttractions(city) {
     `https://api.content.tripadvisor.com/api/v1/location/search?key=${apiKey}&searchQuery=` +
     city +
     `&category=attractions&language=en`;
-  const respons = await fetch(url);
-  const data = await respons.json();
+  const response = await fetch(url, {
+    headers: {
+      Referer: "https://travelfusion-iota.vercel.app", // Your allowed domain
+    },
+  });
+  const data = await response.json();
   //console.log(data);
 
   if (data?.data) {

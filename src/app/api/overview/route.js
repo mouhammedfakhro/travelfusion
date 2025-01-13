@@ -8,7 +8,6 @@ import { getWeather } from "../../../../utils/fetchWeather.js";
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
   const location = searchParams.get("location");
-  console.log(location);
 
   const id = await getCityID(location);
   if (!id) {

@@ -5,7 +5,7 @@ export async function getCityID(city) {
     const url = `https://api.content.tripadvisor.com/api/v1/location/search?key=${apiKey}&searchQuery=${city}&language=en`;
     const response = await fetch(url, {
       headers: {
-        Referer: "https://travelfusion-iota.vercel.app", // Your allowed domain
+        Referer: "https://travelfusion-iota.vercel.app", 
       },
     });
     const data = await response.json();

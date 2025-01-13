@@ -22,10 +22,8 @@ export async function getEventDetails(city, startDate, endDate) {
         const eventPromises = data.eventsResults.map(async (event) => {
           const { title, thumbnail, address, description, venue, link, date } = event;
   
-          // Parse the date string from the event
           const eventDate = new Date(`${new Date().getFullYear()}-${date.startDate}`);
   
-          // Parse startDate and endDate into Date objects
           const start = new Date(startDate);
           const end = new Date(endDate);
   

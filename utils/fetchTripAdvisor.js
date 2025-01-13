@@ -55,7 +55,11 @@ export async function fetchImageUrlByLocationId(id) {
   try {
     const imageURL = `https://api.content.tripadvisor.com/api/v1/location/${id}/photos?key=${apiKey}&language=en`;
 
-    const imageResponse = await fetch(imageURL);
+    const imageResponse = await fetch(imageURL, {
+      headers: {
+        Referer: "https://travelfusion-iota.vercel.app", // Your allowed domain
+      },
+    });
     const imageData = await imageResponse.json();
 
     // Validate data structure

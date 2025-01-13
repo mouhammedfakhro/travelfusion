@@ -23,9 +23,3 @@
 
 
 Viktig info: TripAdvisor API:erna fungerar endast på travelfusion.se då de har en begränsning på vilka domäner som får använda API:erna. För att testa API:erna behöver ni göra det på www.travelfusion.se.
-
-.env:
-TRIPADVISOR_API_KEY=CD678A669501410DA16D6EBE3DF571D5
-OPENWEATHER_API_KEY=e2122c11dee270408b1b8a473b2d4e70
-NEXT_PUBLIC_GOOGLE_API_KEY=AIzaSyAbwVanV2LY5cdcSIDEvmLtTlcs5Ea1P4k
-GOOGLE_EVENTS_API_KEY=23326564-8910-4b69-9e5b-a06b0c4da143

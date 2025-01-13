@@ -3,7 +3,11 @@ const apiKey = process.env.TRIPADVISOR_API_KEY;
 export async function getCityID(city) {
   try {
     const url = `https://api.content.tripadvisor.com/api/v1/location/search?key=${apiKey}&searchQuery=${city}&language=en`;
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+        Referer: "https://travelfusion-iota.vercel.app", // Your allowed domain
+      },
+    });
     const data = await response.json();
     if (data.data && data.data[0]) {
       const firstLocation = data.data[0];

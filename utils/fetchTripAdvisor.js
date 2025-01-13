@@ -23,7 +23,11 @@ export async function getDesAndCountry(id) {
   try {
     const url = `https://api.content.tripadvisor.com/api/v1/location/${id}/details?language=en&currency=USD&key=${apiKey}`;
 
-    const tripResponse = await fetch(url);
+    const tripResponse = await fetch(url, {
+      headers: {
+        Referer: "https://travelfusion-iota.vercel.app", // Your allowed domain
+      },
+    });
     const tripData = await tripResponse.json();
 
     if (

@@ -40,7 +40,8 @@ function EventsContent() {
 
   useEffect(() => {
     setUpEvents();
-  }, []);
+  }, [location, startDate, endDate]);
+  
 
   const renderEvents = () => {
     if (allEvents.length > 0) {

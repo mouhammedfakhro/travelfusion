@@ -25,7 +25,8 @@ const ContentBox = ({
         <p className="text-xs">
           {contentDescription}
         </p>
-        <button
+       {contentLink && (
+         <button
           id="link-button"
           className="w-fit h-fit bg-sky-800 text-white text-sm justify-self-end
                                 rounded-md p-2 hover:bg-sky-700
@@ -34,6 +35,7 @@ const ContentBox = ({
         >
           Read More
         </button>
+       )}
       </div>
     </div>
   );

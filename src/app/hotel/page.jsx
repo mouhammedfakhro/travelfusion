@@ -45,6 +45,7 @@ function HotelContent() {
   const renderHotels = () => {
     if (allHotels.length > 0) {
       return allHotels.map((hotel, index) => {
+        console.log(hotel.link);
         return (
           <ContentBox
             key={hotel.id || index} // Use unique ID or fallback to index

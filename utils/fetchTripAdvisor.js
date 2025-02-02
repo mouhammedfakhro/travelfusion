@@ -98,11 +98,13 @@ export async function createHotelObjects(city) {
     const hotelsData = await hotelsResponse.json();
 
     if (hotelsData?.data) {
+
       const hotelPromises = hotelsData.data.map(async (hotel) => {
+      
         const { location_id, name, address_obj } = hotel;
         const addressString = address_obj.address_string;
         const imageUrl = await fetchImageUrlByLocationId(location_id);
-
+        
         return {
           name,
           address_string: addressString,

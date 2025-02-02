@@ -58,14 +58,6 @@ const EventBox = ({
         <p className="text-xs">{eventTime}</p>
         <p className="text-xs">{description}</p>
         <br />
-        <button
-          className="w-fit h-fit bg-sky-800 text-white text-sm justify-self-end
-                                rounded-md p-2 hover:bg-sky-700
-                                shadow-black/20 shadow-sm"
-          onClick={() => window.open(eventLink, "_blank")}
-        >
-          Find Tickets
-        </button>
       </div>
     </div>
   );

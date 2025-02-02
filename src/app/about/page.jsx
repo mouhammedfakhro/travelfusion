@@ -80,7 +80,7 @@ function AboutContent() {
         >
           {/* Loading State */}
           {loading && (
-            <div className="text-center mt-[20px]">
+            <div className="text-center w-full">
               <ClipLoader color="#36d7b7" loading={loading} size={50} />
               <p>Loading...</p>
             </div>

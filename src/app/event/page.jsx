@@ -17,10 +17,13 @@ function EventsContent() {
   const [loading, setLoading] = useState(true);
   const [loadingError, setLoadingError] = useState(false);
   const [allEvents, setAllEvents] = useState([]);
+  const [errorMessage, setErrorMessage] = useState();
 
   const setUpEvents = async () => {
     if (!location || !startDate || !endDate) {
-      console.warn("No location or start/end date specified in the URL parameters.");
+      console.warn(
+        "No location or start/end date specified in the URL parameters."
+      );
       setLoading(false);
       setLoadingError(true);
       return;
@@ -28,8 +31,12 @@ function EventsContent() {
 
     try {
       const events = await getEvents(location, startDate, endDate);
-      console.log(events.events);
-      setAllEvents(events.events);
+      if (Array.isArray(events.events)) {
+        setAllEvents(events.events);
+      } else
+        setErrorMessage(
+          "API KEY has expired. Get a new one here: https://hasdata.com/apis/google-events-api"
+        );
     } catch (error) {
       console.error("Failed to fetch events:", error);
       setLoadingError(true);
@@ -41,21 +48,18 @@ function EventsContent() {
   useEffect(() => {
     setUpEvents();
   }, [location, startDate, endDate]);
-  
 
   const renderEvents = () => {
+    console.log(allEvents);
     if (allEvents.length > 0) {
       return allEvents.map((event, index) => {
         return (
           <EventBox
-            key={event.id || index} 
-            eventImage={
-              event.thumbnail || "https://placehold.co/600x400"
-            }
+            key={event.id || index}
+            eventImage={event.thumbnail || "https://placehold.co/600x400"}
             eventName={event.title}
             eventLink={event.venue.link}
             description={event.description}
-
             eventLocation={event.address[0]}
             eventDate={event.date.when}
           />
@@ -102,29 +106,35 @@ function EventsContent() {
             </div>
           )}
 
+          {errorMessage && (
+            <div className="text-center text-3xl font-bold">
+              {errorMessage}
+            </div>
+          )}
+
           {!loading && !loadingError && (
             <div id="events-div" className="space-y-2">
               {renderEvents()}
             </div>
           )}
-
         </div>
       </div>
     </div>
   );
 }
 
-
-
-
-
 function eventsPage() {
   return (
-    <Suspense fallback={<div className="text-center mt-8"><ClipLoader color="#36d7b7" size={50} /> Loading...</div>}>
+    <Suspense
+      fallback={
+        <div className="text-center mt-8">
+          <ClipLoader color="#36d7b7" size={50} /> Loading...
+        </div>
+      }
+    >
       <EventsContent />
     </Suspense>
   );
 }
-
 
 export default eventsPage;

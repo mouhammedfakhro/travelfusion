@@ -1,0 +1,1 @@
+Se inlämnad ReadMe.pdf i projektmappen från Canvas.
